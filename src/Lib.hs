@@ -1,5 +1,8 @@
 module Lib
     ( someFunc
+    , someString
+    , grid
+    , languages
     ) where
 
 someFunc :: IO ()
@@ -19,8 +22,7 @@ grid = [  "_ _C _ _ _ _ _ _ _R_ _ _ "
            , "_ _ _ _L_E_ _T_O _ _ _ "
            , "_ _ _ _ _ _ _ HB_ _ _ _  "
            , "_ _ _ _ _ _ _ O_ _ _ _ _  "
-           , "_ _ _ _ _ _ CN_ _ _ _ _  "
-]
+           , "_ _ _ _ _ _ CN_ _ _ _ _  " ]
 
 languages = [ "BASIC"
                     , "COBOL"
@@ -30,4 +32,4 @@ languages = [ "BASIC"
                     , "PHP"
                     , "PYTHON"
                     , "RUBY"
-]
+                    , "SCHEME"]
