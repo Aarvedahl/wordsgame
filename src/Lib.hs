@@ -1,15 +1,29 @@
 module Lib
-    ( someFunc
-    , someString
-    , grid
+    ( grid
     , languages
+    , formatGrid
+    , outputGrid
+    , findWord
+    , findWordInLine
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import Data.List
+type Grid = [String]
 
-someString :: String
-someString = "someString"
+outputGrid :: Grid -> IO()
+outputGrid grid = putStrLn (formatGrid grid)
+
+formatGrid :: Grid -> String
+formatGrid = unlines
+
+findWord :: Grid -> String ->Bool
+findWord grid word=
+  let lines = grid ++ ( map reverse grid)
+  in or $ map (findWordInLine word) lines
+
+findWordInLine :: String -> String -> Bool
+findWordInLine =  isInfixOf
+
 
 grid = [  "_ _C _ _ _ _ _ _ _R_ _ _ "
            , " _ _SI_ _ _ _ _ _ _ _U_ _ "
@@ -33,3 +47,5 @@ languages = [ "BASIC"
                     , "PYTHON"
                     , "RUBY"
                     , "SCHEME"]
+
+-- | stack build, stack exec words-exe
