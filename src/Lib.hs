@@ -8,7 +8,7 @@ module Lib
     , findWords
     ) where
 
-import Data.List (isInfixOf)
+import Data.List (isInfixOf, transpose)
 import Data.Maybe (catMaybes)
 
 type Grid = [String]
@@ -19,9 +19,16 @@ outputGrid grid = putStrLn (formatGrid grid)
 formatGrid :: Grid -> String
 formatGrid = unlines
 
+getLines :: Grid -> [String]
+getLines grid =
+   let horizontal = grid
+       vertical = transpose grid
+       lines = horizontal ++ vertical
+   in lines ++ (map reverse lines)
+
 findWord :: Grid -> String -> Maybe String
 findWord grid word=
-  let lines = grid ++ ( map reverse grid)
+  let lines = getLines grid
       found = or $ map (findWordInLine word) lines
   in if found then Just word else Nothing
 
@@ -35,18 +42,19 @@ findWordInLine :: String -> String -> Bool
 findWordInLine =  isInfixOf
 
 
-grid = [  "_ _C _ _ _ _ _ _ _R_ _ _ "
-           , " _ _SI_ _ _ _ _ _ _ _U_ _ "
-           , " _ _HASKELL _ _ _ _B_"
-           , " _ _A_ _A_ _ _ _ _S_ _Y "
-           , " _ _R_ _ _B_ _ _C _ _ _ "
-           , "_ _PHP_ _ _ _H_ _ _ _ "
-           , "_ _ _ _S_LREP_ _ _ _ _ "
-           , "_ _ _ _I_ _M_Y_ _L_  _ "
-           , "_ _ _ _L_E_ _T_O _ _ _ "
-           , "_ _ _ _ _ _ _ HB_ _ _ _  "
-           , "_ _ _ _ _ _ _ O_ _ _ _ _  "
-           , "_ _ _ _ _ _ CN_ _ _ _ _  " ]
+grid = [
+         "__C________R___"
+       , "__SI________U__"
+       , "__HASKELL____B_"
+       , "__A__A_____S__Y"
+       , "__R___B___C____"
+       , "__PHP____H_____"
+       , "____S_LREP_____"
+       , "____I__M_Y__L__"
+       , "____L_E__T_O___"
+       , "_________HB____"
+       , "_________O_____"
+       , "________CN_____"]
 
 languages = [ "BASIC"
                     , "COBOL"
