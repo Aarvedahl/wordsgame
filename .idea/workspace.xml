@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58730142-7961-4819-bc48-eebc97932794" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lib.hs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lib.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/package.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Spec.hs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Spec.hs" afterDir="false" />
     </list>
@@ -34,20 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Spec.hs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Spec.hs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/Spec.hs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+            <state relative-caret-position="36">
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stack.yaml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/stack.yaml">
+      <file leaf-file-name="package.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+            <state relative-caret-position="126">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -70,9 +70,10 @@
       <list>
         <option value="$PROJECT_DIR$/words.cabal" />
         <option value="$PROJECT_DIR$/app/Main.hs" />
-        <option value="$PROJECT_DIR$/test/Spec.hs" />
         <option value="$PROJECT_DIR$/src/Lib.hs" />
         <option value="$PROJECT_DIR$/stack.yaml" />
+        <option value="$PROJECT_DIR$/package.yaml" />
+        <option value="$PROJECT_DIR$/test/Spec.hs" />
       </list>
     </option>
   </component>
@@ -206,12 +207,12 @@
       <workItem from="1524916748374" duration="2865000" />
       <workItem from="1524933995135" duration="1859000" />
       <workItem from="1525031320974" duration="1259000" />
-      <workItem from="1525120412736" duration="2638000" />
+      <workItem from="1525120412736" duration="3132000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18346000" />
+    <option name="totallyTimeSpent" value="18840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -432,13 +433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/Spec.hs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Setup.hs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -451,8 +445,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stack.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        <state relative-caret-position="576">
+          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Spec.hs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
