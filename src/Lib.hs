@@ -78,3 +78,5 @@ languages = [ "BASIC"
                     , "SCHEME"]
 
 -- | stack build, stack exec words-exe
+-- stack ghci
+--- stack install
