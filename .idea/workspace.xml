@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58730142-7961-4819-bc48-eebc97932794" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/package.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Spec.hs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Spec.hs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +34,8 @@
       <file leaf-file-name="Spec.hs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/Spec.hs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="24" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="252">
+              <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -207,12 +204,12 @@
       <workItem from="1524916748374" duration="2865000" />
       <workItem from="1524933995135" duration="1859000" />
       <workItem from="1525031320974" duration="1259000" />
-      <workItem from="1525120412736" duration="3132000" />
+      <workItem from="1525120412736" duration="3619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18840000" />
+    <option name="totallyTimeSpent" value="19327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -457,10 +454,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa9268.30129/s4/words/test/Spec.hs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa12192.12590/s3/words/test/Spec.hs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa12192.9752/s4/words/test/Spec.hs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/Spec.hs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="252">
+          <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
         </state>
       </provider>
     </entry>
