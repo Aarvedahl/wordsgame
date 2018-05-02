@@ -13,3 +13,6 @@ main = hspec $ do
 
     it "Should not find words that do not exist on the Grid" $ do
        findWords grid ["abc",  "bca"] `shouldBe` []
+
+    it "Should find words that both exists and doesn't exist on the Grid" $ do
+      findWords grid ["PHP", "abc",  "PYTHON", "bca"] `shouldBe` ["PHP", "PYTHON"]
