@@ -16,3 +16,6 @@ main = hspec $ do
 
     it "Should find words that both exists and doesn't exist on the Grid" $ do
       findWords grid ["PHP", "abc",  "PYTHON", "bca"] `shouldBe` ["PHP", "PYTHON"]
+
+    it "Should indent lines correctly" $ do
+      skew ["abc", "abc", "abc"] `shouldBe` ["abc", "_abc", "__abc"]
