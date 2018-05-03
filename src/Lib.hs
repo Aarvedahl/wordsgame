@@ -12,7 +12,19 @@ module Lib
 import Data.List (isInfixOf, transpose)
 import Data.Maybe (catMaybes)
 
-type Grid = [String]
+data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
+type Grid a = [[a]]
+
+zipOverGrid = zipWith zip
+zipOverGridWith = zipWith . zipWith
+
+coordsGrid =
+  let cols = repeat [0..]
+    rows = map repeat [0..]
+  in zipOverGrid rows cols
+
+
+gridWithCoords grid = zipOverGridWith Cell coordsGrid grid
 
 outputGrid :: Grid -> IO()
 outputGrid grid = putStrLn (formatGrid grid)
