@@ -7,6 +7,9 @@ module Lib
     , findWordInLine
     , findWords
     , skew
+    , zipOverGrid
+    , zipOverGridWith
+    , gridWithCoords
     ) where
 
 import Data.List (isInfixOf, transpose)
@@ -15,24 +18,33 @@ import Data.Maybe (catMaybes)
 data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
 type Grid a = [[a]]
 
+zipOverGrid :: Grid a -> Grid b -> Grid (a,b)
 zipOverGrid = zipWith zip
+
+zipOverGridWith :: (a -> b -> c) -> Grid a -> Grid b -> Grid c
 zipOverGridWith = zipWith . zipWith
 
+coordsGrid :: Grid(Integer, Integer)
 coordsGrid =
   let cols = repeat [0..]
-    rows = map repeat [0..]
+      rows = map repeat [0..]
   in zipOverGrid rows cols
 
-
+gridWithCoords :: Grid Char -> Grid Cell
 gridWithCoords grid = zipOverGridWith Cell coordsGrid grid
 
-outputGrid :: Grid -> IO()
+outputGrid :: Grid Cell-> IO()
 outputGrid grid = putStrLn (formatGrid grid)
 
-formatGrid :: Grid -> String
-formatGrid = unlines
+formatGrid :: Grid Cell-> String
+formatGrid grid =
+  let charGrid = (map . map) cell2char grid
+  in unlines charGrid
 
-getLines :: Grid -> [String]
+cell2char :: Cell -> Char
+cell2char (Cell _ c) = c
+
+getLines :: Grid Char-> [String]
 getLines grid =
    let horizontal = grid
        vertical = transpose grid
@@ -41,15 +53,15 @@ getLines grid =
        lines = horizontal ++ vertical ++ diagonal1 ++ diagonal2
    in lines ++ (map reverse lines)
 
-diagonalize :: Grid -> Grid
+diagonalize :: Grid Char -> Grid Char
 diagonalize = transpose . skew
 
-skew :: Grid -> Grid
+skew :: Grid Char -> Grid Char
 skew [] = []
 skew (l:ls) = l : skew (map indent ls)
    where indent line = '_' : line
 
-findWord :: Grid -> String -> Maybe String
+findWord :: Grid Char -> String -> Maybe String
 findWord grid word=
   let lines = getLines grid
       found = or $ map (findWordInLine word) lines
