@@ -82,6 +82,12 @@ findWords grid words =
 findWordInLine :: String -> [Cell]-> Maybe [Cell]
 findWordInLine =  undefined -- isInfixOf
 
+findWordInCellLinePrefix :: [Cell] -> String -> [Cell] -> Maybe[Cell]
+findWordInCellLinePrefix (x:xs) (c:cs) | x == cell2char c
+  = findWordInCellLinePrefix (acc ++ [c]) xs cs
+findWordInCellLinePrefix acc [] _ = Just acc
+findWordInCellLinePrefix _ _ _ = Nothing
+
 
 grid = [
          "__C________R___"
