@@ -1,6 +1,15 @@
 import Lib
 import Test.Hspec
 
+
+gwc = gridWithCoords grid
+
+testFindWord word =
+  let (Just result) = findWord gwc word
+    string = map cell2char result
+  in string `shouldBe` word
+
+
 main :: IO ()
 main = hspec $ do
   describe "formatGrid" $ do
@@ -9,11 +18,15 @@ main = hspec $ do
 
   describe "findWord" $ do
     it "Should find words that exist on the Grid" $ do
-      findWord grid "Haskell" `shouldBe` just "HASKELL"
+      testFindWord "HASKELL"
+      testfindWord "PERL"
 
   describe "findWords" $ do
     it "should find all words that exists on the Grid" $ do
-      findWords grid languages `shouldBe` languages
+
+     let found =  findWords grid languages
+        asString = map (map cell2char) found
+      asString `shouldBe` languages
 
     it "Should not find words that do not exist on the Grid" $ do
        findWords grid ["abc",  "bca"] `shouldBe` []
