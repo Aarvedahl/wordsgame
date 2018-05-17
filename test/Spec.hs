@@ -5,7 +5,11 @@ main :: IO ()
 main = hspec $ do
   describe "formatGrid" $ do
     it "joins up a grid into a string" $ do
-      formatGrid ["abc", "def", "ghi"] `shouldBe` "abc\ndef\nghi\n"
+      (formatGrid (gridWithCoords ["abc", "def", "ghi"])) `shouldBe` "abc\ndef\nghi\n"
+
+  describe "findWord" $ do
+    it "Should find words that exist on the Grid" $ do
+      findWord grid "Haskell" `shouldBe` just "HASKELL"
 
   describe "findWords" $ do
     it "should find all words that exists on the Grid" $ do

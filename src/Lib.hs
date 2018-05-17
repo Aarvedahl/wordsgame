@@ -82,6 +82,7 @@ findWords grid words =
 
 
 findWordInLine :: String -> [Cell]-> Maybe [Cell]
+findWordInLine _ [] = Nothing
 findWordInLine word line =
   let found = findWordInCellLinePrefix [] word line
   in case found of
