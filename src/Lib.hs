@@ -13,14 +13,33 @@ module Lib
     , cell2char
     , findWordInCellLinePrefix
     , Cell(Cell, Indent)
+    , Game (gameGrid, gameWords)
+    , makeGame
     ) where
 
 import Data.List (isInfixOf, transpose)
 import Data.Maybe (catMaybes, listToMaybe)
+import qualified Data.Map as M
+
+data Game = Game {
+              gameGrid :: Grid Cell,
+              gameWords :: M.map String (Maybe [Cell])
+            }
+            deriving Show
 
 data Cell = Cell (Integer, Integer) Char | Indent
             deriving (Eq, Ord, Show)
 type Grid a = [[a]]
+
+makeGame :: Grid Char -> [String] -> Game
+makeGame grid words =
+  let gwc = gridWithCoords grid
+    tuplify word = (word, Nothing)
+    list = map tuplify words
+    dict = M.fromList list
+  in Game gwc dict
+
+
 
 zipOverGrid :: Grid a -> Grid b -> Grid (a,b)
 zipOverGrid = zipWith zip
