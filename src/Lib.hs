@@ -15,6 +15,10 @@ module Lib
     , Cell(Cell, Indent)
     , Game (gameGrid, gameWords)
     , makeGame
+    , totalWords
+    , score
+    , playGame
+    , formatGame
     ) where
 
 import Data.List (isInfixOf, transpose)
@@ -39,7 +43,32 @@ makeGame grid words =
     dict = M.fromList list
   in Game gwc dict
 
+totalWords :: Game -> Int
+totalWords game =  length . M.keys $ gameWords game
 
+score :: Game -> Int
+score game =  length . catMaybes . M.elems $ gameWords game
+
+playGame :: Game -> String ->Game
+playGame game word =
+  let grid = gameGrid game
+    foundWord = findWord grid
+    newGame = case foundWord of
+      Nothing -> game
+      Just cs ->
+        let dict = gameWords game
+          newDict = M.insert word foundWord dict
+        in Game grid newDict
+  in newGame
+
+formatGame :: Game -> String
+formatGame game =
+  let grid = gameGrid game
+  in formatGrid grid
+    ++ "\n\n"
+    ++ (show $ score game)
+    ++ "/"
+    ++ (show $ totalWords game)
 
 zipOverGrid :: Grid a -> Grid b -> Grid (a,b)
 zipOverGrid = zipWith zip
