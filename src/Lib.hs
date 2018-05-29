@@ -19,16 +19,17 @@ module Lib
     , score
     , playGame
     , formatGame
+    , completed
     ) where
 
+import System.IO
 import Data.List (isInfixOf, transpose)
 import Data.Maybe (catMaybes, listToMaybe)
 import qualified Data.Map as M
 
-data Game = Game {
-              gameGrid :: Grid Cell,
-              gameWords :: M.map String (Maybe [Cell])
-            }
+data Game = Game { gameGrid  :: Grid Cell
+                 , gameWords :: M.Map String (Maybe [Cell])
+                 }
             deriving Show
 
 data Cell = Cell (Integer, Integer) Char | Indent
@@ -37,11 +38,9 @@ type Grid a = [[a]]
 
 makeGame :: Grid Char -> [String] -> Game
 makeGame grid words =
-  let gwc = gridWithCoords grid
-    tuplify word = (word, Nothing)
-    list = map tuplify words
-    dict = M.fromList list
-  in Game gwc dict
+  let grid'  = gridWithCoords grid
+      words' = M.fromList $ map (\word -> (word, Nothing)) words
+   in Game grid' words'
 
 totalWords :: Game -> Int
 totalWords game =  length . M.keys $ gameWords game
@@ -49,17 +48,22 @@ totalWords game =  length . M.keys $ gameWords game
 score :: Game -> Int
 score game =  length . catMaybes . M.elems $ gameWords game
 
-playGame :: Game -> String ->Game
-playGame game word =
+completed :: Game -> Bool
+completed game = score game == totalWords
+
+playWord :: Game -> String -> Game
+playWord game word | not (M.member word (gameWords game)) = game
+playWord game word =
   let grid = gameGrid game
-    foundWord = findWord grid
-    newGame = case foundWord of
-      Nothing -> game
-      Just cs ->
-        let dict = gameWords game
-          newDict = M.insert word foundWord dict
-        in Game grid newDict
+      foundWord = findWord grid word
+      newGame = case foundWord of
+        Nothing -> game
+        Just cs ->
+          let words = gameWords game
+              words' = M.insert word foundWord words
+          in Game grid words'
   in newGame
+
 
 formatGame :: Game -> String
 formatGame game =
@@ -119,7 +123,7 @@ skew (x:xs) = x : skew (map indent xs)
 findWord :: Grid Cell -> String -> Maybe [Cell]
 findWord grid word=
  let lines = getLines grid
-  foundWords = map (findWordInLine word) lines
+     foundWords = map (findWordInLine word) lines
  in listToMaybe (catMaybes foundWords)
 
 
