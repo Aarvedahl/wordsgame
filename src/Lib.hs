@@ -26,6 +26,7 @@ module Lib
 
 import System.IO
 import Data.List (isInfixOf, transpose)
+import Data.Char(toLower)
 import Data.Maybe (catMaybes, listToMaybe)
 import System.Random
 import qualified Data.Map as M
@@ -67,11 +68,8 @@ playGame game word =
           in Game grid words'
   in newGame
 
-
 formatGame :: Game -> String
-formatGame game =
-  let grid = gameGrid game
-  in formatGrid grid
+formatGame game = formatGameGrid game
     ++ "\n\n"
     ++ (show $ score game)
     ++ "/"
@@ -87,8 +85,6 @@ fillInBlanks gen grid =
       fill '_' r = r
       fill c _ =  c
   in zipOverGridWith fill grid r
-
-
 
 zipOverGrid :: Grid a -> Grid b -> Grid (a,b)
 zipOverGrid = zipWith zip
@@ -110,6 +106,17 @@ gridWithCoords grid = zipOverGridWith Cell coordsGrid grid
 
 outputGrid :: Grid Cell-> IO()
 outputGrid grid = putStrLn (formatGrid grid)
+
+formatGameGrid :: Game -> String
+formatGameGrid game =
+  let grid = gameGrid game
+      dict = gameWords game :: M.Map String (Maybe [Cell])
+      cellSet = concat . catMaybes . M.elems $ dict
+      formatCell cell =
+        let char = cell2char cell
+        in if cell `elem` cellSet then char else toLower char
+      charGrid = mapOverGrid formatCell grid
+  in unlines charGrid
 
 formatGrid :: Grid Cell-> String
 formatGrid = unlines . mapOverGrid cell2char
