@@ -49,11 +49,11 @@ score :: Game -> Int
 score game =  length . catMaybes . M.elems $ gameWords game
 
 completed :: Game -> Bool
-completed game = score game == totalWords
+completed game = score game == totalWords game
 
-playWord :: Game -> String -> Game
-playWord game word | not (M.member word (gameWords game)) = game
-playWord game word =
+playGame :: Game -> String -> Game
+playGame game word | not (M.member word (gameWords game)) = game
+playGame game word =
   let grid = gameGrid game
       foundWord = findWord grid word
       newGame = case foundWord of
